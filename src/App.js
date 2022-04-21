@@ -4,31 +4,9 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import { useNavigate } from "react-router-dom";
+import DistanceSelect from "./components/DistanceSelect";
+import CountrySelect from "./components/CountrySelect";
 
-
-//Distance select component
-const distanceSelect = (dist, setDist, setDistance) => {
-  const Add = dist.map((Add) => Add);
-  const handleAddrTypeChange = (e) => {
-    setDistance(dist[e.target.value]);
-  };
-
-  return (
-    <div>
-      <h4>Select Range</h4>
-      <select
-        onChange={(e) => handleAddrTypeChange(e)}
-        className="browser-default custom-select"
-      >
-        {Add.map((address, key) => (
-          <option key={key} value={key}>
-            {address}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-};
 
 //Working object for return api data
 function dataObject(data) {
@@ -119,41 +97,9 @@ const Load = (rowData, setRowData, distance, country) => {
   }, [distance, setRowData, country, null]);
 };
 
-//Country Select Component
-const CountrySelect = (country, setCountry) => {
-  const [countryList, setCountryList] = useState([]);
 
-  useEffect(() => {
-    fetch(`http://sefdb02.qut.edu.au:3001/countries`)
-      .then((res) => res.json())
-      .then((works) => setCountryList(works));
-  }, []);
-
-  const Add = countryList.map((Add) => Add);
-  const handleAddrTypeChange = (e) => {
-    setCountry(countryList[e.target.value]);
-  };
-  return (
-    <div>
-      <h4>Select Country</h4>
-      <select
-        onChange={(e) => handleAddrTypeChange(e)}
-        className="browser-default custom-select"
-      >
-        {Add.map((address, key) => (
-          <option key={key} value={key}>
-            {address}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-};
-
-function App() {
-  const [dist, setDist] = useState(["100 Kms", "30 Kms", "10 Kms", "5 Kms"]);
-  const [distance, setDistance] = useState([dist[0]]);
-
+function App() { 
+  const [distance, setDistance] = useState([]);
   const [country, setCountry] = useState("japan");
   const [rowData, setRowData] = useState([]);
 
@@ -164,9 +110,11 @@ function App() {
           <div className="control-outside">
             <div className="round-box box-border">
               <div className="control-box">
-                {distanceSelect(dist, setDist, setDistance, country)}
+                <DistanceSelect setDistance={setDistance}/>
+                
+                {/* {DistanceSelect(dist, setDist, setDistance, country)} */}
                 <div style={{height:"1rem"}}/>
-                {CountrySelect(country, setCountry)}
+                <CountrySelect country={country} setCountry={setCountry}/>
               </div>
             </div>
           </div>
