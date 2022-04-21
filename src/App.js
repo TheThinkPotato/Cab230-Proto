@@ -26,12 +26,6 @@ const distanceSelect = (dist, setDist, setDistance) => {
           </option>
         ))}
       </select>
-
-      {/* <select name="cars" id="cars" onChange={e => dist(e)}> */}
-      {/* <option value={distanceOptions[0]}>{distanceOptions[0]}</option>
-        <option value={distanceOptions[1]}>{distanceOptions[1]}</option>
-        <option value={distanceOptions[2]}>{distanceOptions[2]}</option>                 */}
-      {/* </select> */}
     </div>
   );
 };
@@ -95,20 +89,6 @@ const Grid = (rowData, setRowData, distance, country) => {
       .then((data) => setRowData(data));
   }, [distance, setRowData, country, null]);
 
-  // useEffect(() => {
-  //   console.log(distance);
-  //   fetch(
-  //     `http://sefdb02.qut.edu.au:3001/volcanoes?country=${country}&populatedWithin=${distance}km`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((works) =>
-  //       works.map((data) => {
-  //         return dataObject(data);
-  //       })
-  //     )
-  //     .then((data) => setRowData(data));
-  // }, []);
-
   return (
     <div className="container" style={{ margin: "auto", display: "flex" }}>
       <div
@@ -116,7 +96,7 @@ const Grid = (rowData, setRowData, distance, country) => {
           margin: "auto",
         }}
       >
-        <h1>Volcanos</h1>
+        <h1>Volcanoes</h1>
         <p>
           <Badge color="success">{rowData.length}</Badge>
           <span> </span>items of data
@@ -147,7 +127,6 @@ const Grid = (rowData, setRowData, distance, country) => {
 const CountrySelect = (country, setCountry) => {
   const [countryList, setCountryList] = useState([]);
 
-  // http://sefdb02.qut.edu.au:3001/countries
   useEffect(() => {
     fetch(`http://sefdb02.qut.edu.au:3001/countries`)
       .then((res) => res.json())
@@ -160,7 +139,7 @@ const CountrySelect = (country, setCountry) => {
   }
   return (
     <div>
-      <h4>Select Distance</h4>
+      <h4>Select Country</h4>
       <select
         onChange={(e) => handleAddrTypeChange(e)}
         className="browser-default custom-select"
