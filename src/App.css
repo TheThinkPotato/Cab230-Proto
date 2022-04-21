@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,15 +13,152 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+p {
+  font-size:larger;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.space {
+  margin-top: 2rem;
 }
+
+.box-border{
+  border: 1px solid #555;
+  border-radius: 15px;
+  box-shadow: 2px 3px rgba(64,64,64,0.4);
+}
+
+.main-window {
+  /* overflow: hidden; */
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding-top: 2rem;
+  width: fit-content;
+  height: fit-content;
+}
+
+.volcano-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  width: fit-content;
+  height: fit-content;
+}
+
+.volcano-info{
+  display: flex;
+  flex-direction: column;
+  background-color: #eee;
+  align-items: center;
+  width: fit-content;
+  height: 15rem;
+  width: 850px;
+  margin: 2rem;
+}
+
+.button-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 1.5rem ;
+}
+
+.working-window{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding-top: 2rem;
+  width: fit-content;
+  height: 100%;  
+  border: 2px solid black;
+  padding-block: 2rem;
+  padding-inline: 2rem;
+}
+.control-outside{  
+  flex-direction: column;
+  align-items: flex-start;  
+  
+  padding-right: 1rem;
+  width: 320px;  
+  height: 650px;
+  
+}
+
+.round-box{
+  margin: auto;
+  flex-direction: row;
+  align-items: center;
+
+  background: #eee;
+  
+  width: 90%;
+  padding-block: 1%;
+  padding-inline: 1%;
+}
+
+.control-box{  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: auto;  
+  padding-block: 1rem;
+  width: fit-content;
+  height: fit-content;
+  
+}
+
+.bg-color-gray {
+  background-color: gray;
+}
+
+.bg-color-ltblue {
+  background-color: lightblue;
+}
+
+.align-left {
+  align-items: flex-start;
+}
+
+.align-center {
+  margin:auto;
+  align-items: center;
+}
+
+.align-right{
+  align-items: flex-end;
+}
+
+.select-box{
+  display: flex;
+  align-items: flex-start;
+}
+
+.flex-container{
+  
+  display: flex;  
+  justify-content: space-between;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
+.column{  
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.control-window {
+  margin: auto;
+  padding-top: 2rem;
+  width: 200px;
+  height: 100%;
+}
+

@@ -3,21 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "reactstrap";
 import { Map, Marker, ZoomControl } from "pigeon-maps";
 
-const testData = {
-  name: "Newer Volcanics Province",
-  country: "Australia",
-  region: "Melanesia and Australia",
-  subregion: "Australia",
-  last_eruption: "2900 BCE",
-  summit: 1011,
-  elevation: 3317,
-  latitude: "-37.7700",
-  longitude: "142.5000",
-};
-
 const DisplayInfo = (id, volcanoData, setVolcanoData) => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     // console.log(`http://sefdb02.qut.edu.au:3001/volcano/${id}`);
     fetch(`http://sefdb02.qut.edu.au:3001/volcano/${id}`)
@@ -55,8 +41,8 @@ const DisplayInfo = (id, volcanoData, setVolcanoData) => {
             width: "900px",
           }}
         >
-          <h1>{testData.name}</h1>
-          <p>Country: {volcanoData.country}</p>
+          <h1>{volcanoData.name}</h1>
+          <p><span style={{fontWeight:"bolder"}} >Country:</span> {volcanoData.country}</p>
           <p>Region: {volcanoData.region}</p>
           <p>Subregion: {volcanoData.subregion}</p>
           <p>Last Eruption: {volcanoData.last_eruption}</p>
@@ -68,14 +54,19 @@ const DisplayInfo = (id, volcanoData, setVolcanoData) => {
 };
 
 const volvanoMap = (lat, long) => {
-  
-  long = parseFloat(long);  // Marker will not take direct value from longitude
+  long = parseFloat(long); // Marker will not take direct value from longitude
 
   return (
-    <Map height={500} defaultCenter={[0, 0]} defaultZoom={8} center={[lat,long]} >
+    <Map
+      height={500}
+      width={850}
+      defaultCenter={[0, 0]}
+      defaultZoom={8}
+      center={[lat, long]}
+    >
       {console.log(long)}
-      <Marker width={40} anchor={[lat,long]}/>
-      <ZoomControl/>
+      <Marker width={40} anchor={[lat, long]} />
+      <ZoomControl />
     </Map>
   );
 };
@@ -88,16 +79,24 @@ export default function Volcanoes() {
 
   return (
     <div className="container">
-      {DisplayInfo(id, volcanoData, setVolcanoData)}
-      {volvanoMap(volcanoData.latitude, volcanoData.longitude)}
-      <Button
-        color="info"
-        size="sm"
-        className="mt-3"
-        onClick={() => navigate("/")}
-      >
-        Back
-      </Button>
+      <div className="main-window">
+        <div className="volcano-window box-border">
+          <div className="volcano-info box-border">
+            {DisplayInfo(id, volcanoData, setVolcanoData)}
+          </div>
+          <div>{volvanoMap(volcanoData.latitude, volcanoData.longitude)}</div>
+          <div className="button-area">
+          <Button
+            color="info"
+            size="sm"
+            className="mt-3"
+            onClick={() => navigate("/")}
+          >
+            Back
+          </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
