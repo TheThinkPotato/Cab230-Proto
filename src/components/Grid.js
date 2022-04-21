@@ -48,22 +48,19 @@ const Grid = (props) => {
   const [rowData, setRowData] = useState([]);
   const navigate = useNavigate();
 
-  // Remove Kms from distance string for API call
   let distance = props.distance;
-
-  if (distance.length === 6) {
+  
+  // Remove Kms from distance string for API call
+  if (distance.length === 7) {
+    distance = distance.slice(0, 3);
+  } else if (distance.length === 6) {
     distance = distance.slice(0, 2);
   } else if (distance.length === 5) {
     distance = distance.slice(0, 1);
-  } else {
-    distance = distance.slice(0, 3);
-  }
-
+  }  
   useEffect(() => {
     fetch(
-      `http://sefdb02.qut.edu.au:3001/volcanoes?country=${
-        props.country
-      }&populatedWithin=${distance}km`
+      `http://sefdb02.qut.edu.au:3001/volcanoes?country=${props.country}&populatedWithin=${distance}km`
     )
       .then((res) => res.json())
       .then((works) =>
@@ -94,6 +91,5 @@ const Grid = (props) => {
     </div>
   );
 };
-
 
 export default Grid;

@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import DistanceSelect from "./components/DistanceSelect";
@@ -8,7 +8,7 @@ import Grid from "./components/Grid";
 
 function App() {
   const [distance, setDistance] = useState([]);
-  const [country, setCountry] = useState([]);
+  const [country, setCountry] = useState(["Algeria"]);
 
   return (
     <div className="APP space">
