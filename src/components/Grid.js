@@ -1,11 +1,10 @@
-import "../App.css";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
-import { Badge } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
+//Working object for return api data
 function dataObject(data) {
   return {
     name: data.name,
@@ -15,6 +14,7 @@ function dataObject(data) {
   };
 }
 
+//Table template
 const table = [
   {
     headerName: "Name",
@@ -35,89 +35,65 @@ const table = [
     filter: "agTextColumnFilter",
   },
   {
-    headerName: "Subregion",
-    field: "subregion",
-    sortable: true,
-    filter: "agTextColumnFilter",
-  },
-  {
     headerName: "ID",
     field: "id",
     sortable: true,
     filter: "agNumberColumnFilter",
+    width: 60,
   },
 ];
 
-export default function Grid(rowData, setRowData, distance, country) {
-//   if (
-//     distance !== 5 ||
-//     distance !== 10 ||
-//     distance !== 30 ||
-//     distance !== 100
-//   ) {
-//     distance = 5;
-//   }
+//Main grid of countries and volcanoes
+const Grid = (props) => {
+  const [rowData, setRowData] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(distance);
-    fetch(
-      `http://sefdb02.qut.edu.au:3001/volcanoes?country=${country}&populatedWithin=${distance}km`
-    )
-      .then((res) => res.json())
-      .then((works) =>
-        works.map((data) => {
-          return dataObject(data);
-        })
-      )
-      .then((data) => setRowData(data));
-  }, [distance, setRowData]);
+  // Remove Kms from distance string for API call
+  let distance = props.distance;
+
+  if (distance.length === 6) {
+    distance = distance.slice(0, 2);
+  } else if (distance.length === 5) {
+    distance = distance.slice(0, 1);
+  } else {
+    distance = distance.slice(0, 3);
+  }
 
   useEffect(() => {
-    console.log(distance);
     fetch(
-      `http://sefdb02.qut.edu.au:3001/volcanoes?country=${country}&populatedWithin=${distance}km`
+      `http://sefdb02.qut.edu.au:3001/volcanoes?country=${
+        props.country
+      }&populatedWithin=${distance}km`
     )
       .then((res) => res.json())
       .then((works) =>
         works.map((data) => {
+          console.log(data);
           return dataObject(data);
         })
       )
       .then((data) => setRowData(data));
-  }, []);
+  }, [props]);
 
   return (
-    <div className="container" style={{ margin: "auto", display: "flex" }}>
-      <div
-        style={{
-          margin: "auto",
-        }}
-      >
-        <h1>Volcanos</h1>
-        <p>
-          <Badge color="success">{rowData.length}</Badge>
-          <span> </span>items of data
-        </p>
-      </div>
-      <div className="container" style={{ margin: "auto", display: "flex" }}>
-        <div
-          className="ag-theme-balham"
-          style={{
-            margin: "auto",
-            height: "300px",
-            width: "900px",
-          }}
-        >
-          <AgGridReact
-            columnDefs={table}
-            rowData={rowData}
-            pagination={true}
-            paginationPageSize={7}
-            onRowClicked={(row) => navigate(`/volcanoe?id=${row.data.id}`)}
-          />
-        </div>
-      </div>
+    <div
+      className="ag-theme-balham"
+      style={{
+        margin: "auto",
+        height: "650px",
+        width: "665px",
+      }}
+    >
+      <AgGridReact
+        columnDefs={table}
+        rowData={rowData}
+        pagination={true}
+        paginationPageSize={20}
+        onRowClicked={(row) => navigate(`/volcanoe?id=${row.data.id}`)}
+      />
     </div>
   );
 };
+
+
+export default Grid;

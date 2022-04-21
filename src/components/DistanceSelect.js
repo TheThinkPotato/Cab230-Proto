@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 //Distance select component
 const DistanceSelect = (props) => {
@@ -7,6 +7,9 @@ const DistanceSelect = (props) => {
   const handleAddrTypeChange = (e) => {
     props.setDistance(distanceOptions[e.target.value]);
   };
+  useEffect(() => {
+    props.setDistance(distanceOptions[0]);
+  }, []);
 
   return (
     <div>
