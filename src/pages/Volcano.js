@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "reactstrap";
+import { Map, Marker, ZoomControl } from "pigeon-maps";
 
 const testData = {
   name: "Newer Volcanics Province",
@@ -14,8 +15,7 @@ const testData = {
   longitude: "142.5000",
 };
 
-const Grid = (id) => {
-  const [volcanoData, setVolcanoData] = useState([]);
+const DisplayInfo = (id, volcanoData, setVolcanoData) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -67,14 +67,29 @@ const Grid = (id) => {
   );
 };
 
+const volvanoMap = (lat, long) => {
+  
+  long = parseFloat(long);  // Marker will not take direct value from longitude
+
+  return (
+    <Map height={500} defaultCenter={[0, 0]} defaultZoom={8} center={[lat,long]} >
+      {console.log(long)}
+      <Marker width={40} anchor={[lat,long]}/>
+      <ZoomControl/>
+    </Map>
+  );
+};
+
 export default function Volcanoes() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
+  const [volcanoData, setVolcanoData] = useState([]);
 
   return (
     <div className="container">
-      {Grid(id)}
+      {DisplayInfo(id, volcanoData, setVolcanoData)}
+      {volvanoMap(volcanoData.latitude, volcanoData.longitude)}
       <Button
         color="info"
         size="sm"
