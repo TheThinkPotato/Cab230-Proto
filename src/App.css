@@ -1,23 +1,10 @@
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-
 p {
   font-size:larger;
 }
 
+body{
+  background-color: #ddd;
+}
 .space {
   margin-top: 2rem;
 }
@@ -29,7 +16,6 @@ p {
 }
 
 .main-window {
-  /* overflow: hidden; */
   display: flex;
   align-items: center;
   margin: auto;
@@ -44,6 +30,7 @@ p {
   align-items: center;  
   width: fit-content;
   height: fit-content;
+  background: #fff;
 }
 
 .volcano-info{
@@ -73,9 +60,9 @@ p {
   padding-top: 2rem;
   width: fit-content;
   height: 100%;  
-  border: 2px solid black;
   padding-block: 2rem;
   padding-inline: 2rem;
+  background: #fff;
 }
 .control-outside{  
   flex-direction: column;
@@ -109,56 +96,3 @@ p {
   height: fit-content;
   
 }
-
-.bg-color-gray {
-  background-color: gray;
-}
-
-.bg-color-ltblue {
-  background-color: lightblue;
-}
-
-.align-left {
-  align-items: flex-start;
-}
-
-.align-center {
-  margin:auto;
-  align-items: center;
-}
-
-.align-right{
-  align-items: flex-end;
-}
-
-.select-box{
-  display: flex;
-  align-items: flex-start;
-}
-
-.flex-container{
-  
-  display: flex;  
-  justify-content: space-between;
-}
-
-.row{
-  display: flex;
-  flex-direction: row;
-}
-
-.column{  
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-}
-
-.control-window {
-  margin: auto;
-  padding-top: 2rem;
-  width: 200px;
-  height: 100%;
-}
-

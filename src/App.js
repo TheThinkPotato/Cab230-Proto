@@ -1,12 +1,12 @@
 import "./App.css";
-
 import React, { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
-import { Badge } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
+
+//Distance select component
 const distanceSelect = (dist, setDist, setDistance) => {
   const Add = dist.map((Add) => Add);
   const handleAddrTypeChange = (e) => {
@@ -15,7 +15,7 @@ const distanceSelect = (dist, setDist, setDistance) => {
 
   return (
     <div>
-      <h4>Select Distance</h4>
+      <h4>Select Range</h4>
       <select
         onChange={(e) => handleAddrTypeChange(e)}
         className="browser-default custom-select"
@@ -30,6 +30,7 @@ const distanceSelect = (dist, setDist, setDistance) => {
   );
 };
 
+//Working object for return api data
 function dataObject(data) {
   return {
     name: data.name,
@@ -39,6 +40,7 @@ function dataObject(data) {
   };
 }
 
+//Table template
 const table = [
   {
     headerName: "Name",
@@ -58,12 +60,6 @@ const table = [
     sortable: true,
     filter: "agTextColumnFilter",
   },
-  // {
-  //   headerName: "Subregion",
-  //   field: "subregion",
-  //   sortable: true,
-  //   filter: "agTextColumnFilter",
-  // },
   {
     headerName: "ID",
     field: "id",
@@ -73,6 +69,7 @@ const table = [
   },
 ];
 
+//Main grid of countries and volcanoes
 const Grid = (rowData) => {
   const navigate = useNavigate();
   return (
@@ -81,7 +78,6 @@ const Grid = (rowData) => {
       style={{
         margin: "auto",
         height: "650px",
-        // width: "865px",
         width: "665px",
       }}
     >
@@ -96,29 +92,19 @@ const Grid = (rowData) => {
   );
 };
 
-const Counter = (rowData) => {
-  return (
-    <div className="container" style={{ margin: "auto", display: "flex" }}>
-      <div
-        style={{
-          margin: "auto",
-        }}
-      >
-        <h1>Volcanoes</h1>
-        <p>
-          <Badge color="success">{rowData.length}</Badge>
-          <span> </span>items of data
-        </p>
-      </div>
-      <div
-        className="container"
-        style={{ margin: "auto", display: "flex" }}
-      ></div>
-    </div>
-  );
-};
-
+// Load data from API
 const Load = (rowData, setRowData, distance, country) => {
+  // Remove Kms from distance string for API call
+  if (distance.length === 6) {
+  distance = distance.slice(0, 2);
+  }
+  else if (distance.length === 5) {
+    distance = distance.slice(0, 1);
+  }
+  else
+  {distance = distance.slice(0, 3);}
+  
+  console.log(distance)
   useEffect(() => {
     fetch(
       `http://sefdb02.qut.edu.au:3001/volcanoes?country=${country}&populatedWithin=${distance}km`
@@ -133,6 +119,7 @@ const Load = (rowData, setRowData, distance, country) => {
   }, [distance, setRowData, country, null]);
 };
 
+//Country Select Component
 const CountrySelect = (country, setCountry) => {
   const [countryList, setCountryList] = useState([]);
 
@@ -164,7 +151,7 @@ const CountrySelect = (country, setCountry) => {
 };
 
 function App() {
-  const [dist, setDist] = useState([100, 30, 10, 5]);
+  const [dist, setDist] = useState(["100 Kms", "30 Kms", "10 Kms", "5 Kms"]);
   const [distance, setDistance] = useState([dist[0]]);
 
   const [country, setCountry] = useState("japan");
@@ -178,16 +165,13 @@ function App() {
             <div className="round-box box-border">
               <div className="control-box">
                 {distanceSelect(dist, setDist, setDistance, country)}
+                <div style={{height:"1rem"}}/>
                 {CountrySelect(country, setCountry)}
-                {/* {Counter()} */}
               </div>
             </div>
           </div>
 
-          <div
-            className=""
-            style={{ border: "4px border black", maxWidth: "900px" }}
-          >
+          <div>
             {Load(rowData, setRowData, distance, country)}
             {Grid(rowData)}
           </div>
