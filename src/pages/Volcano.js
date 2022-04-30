@@ -35,7 +35,7 @@ export default function Volcanoes() {
                 color="info"
                 size="sm"
                 className="mt-3"
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/search")}
               >
                 Back
               </Button>

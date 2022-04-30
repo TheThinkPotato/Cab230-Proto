@@ -3,6 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import { useNavigate } from "react-router-dom";
+import { Color } from "ag-grid-community";
 
 //Working object for return api data
 function dataObject(data) {
@@ -48,17 +49,19 @@ const Grid = (props) => {
   const [rowData, setRowData] = useState([]);
   const navigate = useNavigate();
 
-  let distance = props.distance;
-  
-  // Remove Kms from distance string for API call
-  if (distance.length === 7) {
-    distance = distance.slice(0, 3);
-  } else if (distance.length === 6) {
-    distance = distance.slice(0, 2);
-  } else if (distance.length === 5) {
-    distance = distance.slice(0, 1);
-  }  
+
   useEffect(() => {
+    let distance = props.distance;
+  
+    // Remove Kms from distance string for API call
+    if (distance.length === 7) {
+      distance = distance.slice(0, 3);
+    } else if (distance.length === 6) {
+      distance = distance.slice(0, 2);
+    } else if (distance.length === 5) {
+      distance = distance.slice(0, 1);
+    }      
+    
     fetch(
       `http://sefdb02.qut.edu.au:3001/volcanoes?country=${props.country}&populatedWithin=${distance}km`
     )
@@ -82,8 +85,9 @@ const Grid = (props) => {
       }}
     >
       <AgGridReact
+        background-color={'#000000'}
         columnDefs={table}
-        rowData={rowData}
+        rowData={rowData}        
         pagination={true}
         paginationPageSize={20}
         onRowClicked={(row) => navigate(`/volcanoe?id=${row.data.id}`)}

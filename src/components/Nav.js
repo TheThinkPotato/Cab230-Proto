@@ -10,10 +10,10 @@ export default function Nav() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/">Search</Link>
+          <Link to="/Search">Search</Link>
         </li>
         <li>
-          <Link to="/Log In">Log In</Link>
+          <Link to="/LogIn">Log In</Link>
         </li>
         <li>
           <Link to="/LogOut">Log Out</Link>
