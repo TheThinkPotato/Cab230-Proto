@@ -1,18 +1,89 @@
 p {
-  font-size:larger;
+  font-size: larger;
 }
 
-body{
-  background-color: #ddd;
+body {
+  background: rgba(188, 200, 255, 0.2);
+  background-image: url("../public/images/background.jpg");
 }
+
+.icon {
+  display: inline-block;
+  color: #fff;
+  width: 49%;
+}
+
+.icon img {
+  width: 100px;  
+  
+  border-radius: 3px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.frontLogo {  
+  display: block;
+  color: white;
+  margin: auto;
+  text-align: center; 
+    
+}
+
+
+
+nav {
+  margin: auto;
+  
+  width: 100%;
+  display: inline-block;  
+  text-align: right;
+  flex-direction: row;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  color: #555;
+  text-decoration: none;
+  display: inline;
+  padding: 10px 15px;
+  border-radius: 3px;
+  transition: 0.3s ease all;
+}
+
+nav a{
+  color: #555;
+  text-decoration: none;
+  display: inline;
+  padding: 10px 15px;
+  border-radius: 3px;
+  transition: 0.3s ease all;
+}
+
+nav ul li a:hover {
+  color: #fff;
+  background: #444;
+} 
+
+header {    
+  background: #fff;
+  color: #000;
+  padding: 10px 30px;
+  width: 100%;
+}
+
 .space {
   margin-top: 2rem;
 }
 
-.box-border{
+.box-border {
   border: 1px solid #555;
   border-radius: 15px;
-  box-shadow: 2px 3px rgba(64,64,64,0.4);
+  box-shadow: 2px 3px rgba(64, 64, 64, 0.4);
 }
 
 .main-window {
@@ -27,13 +98,13 @@ body{
 .volcano-window {
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   width: fit-content;
   height: fit-content;
   background: #fff;
 }
 
-.volcano-info{
+.volcano-info {
   display: flex;
   flex-direction: column;
   background-color: #eee;
@@ -44,55 +115,53 @@ body{
   margin: 2rem;
 }
 
-.button-area{
+.button-area {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: fit-content;
   height: fit-content;
-  margin-bottom: 1.5rem ;
+  margin-bottom: 1.5rem;
 }
 
-.working-window{
+.working-window {
   display: flex;
   align-items: center;
   margin: auto;
   padding-top: 2rem;
   width: fit-content;
-  height: 100%;  
+  height: 100%;
   padding-block: 2rem;
   padding-inline: 2rem;
   background: #fff;
 }
-.control-outside{  
+.control-outside {
   flex-direction: column;
-  align-items: flex-start;  
-  
+  align-items: flex-start;
+
   padding-right: 1rem;
-  width: 320px;  
+  width: 320px;
   height: 650px;
-  
 }
 
-.round-box{
+.round-box {
   margin: auto;
   flex-direction: row;
   align-items: center;
 
   background: #eee;
-  
+
   width: 90%;
   padding-block: 1%;
   padding-inline: 1%;
 }
 
-.control-box{  
+.control-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: auto;  
+  margin: auto;
   padding-block: 1rem;
   width: fit-content;
   height: fit-content;
-  
 }
