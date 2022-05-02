@@ -110,7 +110,7 @@ const LogControl = (props) => {
                 </div>
               )}
 
-              <div className="Button">
+              <div style={{height:"3rem", paddingTop:"1rem"}}>
                 {!!message && <div> {message + "."} </div>}
               </div>
             </div>
