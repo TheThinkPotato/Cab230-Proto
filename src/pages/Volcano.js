@@ -16,8 +16,8 @@ export default function Volcanoes() {
     <div>
       <Header />
       <div className="container">
-        <div className="main-window"  style={{height:"fit-content"}}>
-          <div className="volcano-window box-border" >
+        <div className="main-window" style={{ height: "fit-content" }}>
+          <div className="volcano-window box-border">
             <div className="volcano-info box-border">
               <DisplayInfo
                 id={id}
@@ -45,8 +45,7 @@ export default function Volcanoes() {
           </div>
         </div>
       </div>
-      <div style={{height:"2rem"}}>
-      </div>
+      <div style={{ height: "2rem" }}></div>
     </div>
   );
 }

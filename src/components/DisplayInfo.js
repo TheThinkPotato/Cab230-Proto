@@ -1,25 +1,10 @@
 import React, { useEffect } from "react";
+import { getVolcanoeData } from "../data/apiCalls";
 
 // Gets API data for selected volcano
 const DisplayInfo = (props) => {
   useEffect(() => {
-    fetch(`http://sefdb02.qut.edu.au:3001/volcano/${props.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        return {
-          name: data.name,
-          country: data.country,
-          region: data.region,
-          subregion: data.subregion,
-          last_eruption: data.last_eruption,
-          summit: data.summit,
-          elevation: data.elevation,
-          latitude: data.latitude,
-          longitude: data.longitude,
-        };
-      })
-
-      .then((data) => props.setVolcanoData(data));
+    getVolcanoeData(props.id).then((data) => props.setVolcanoData(data));
   }, []);
 
   return (
@@ -57,7 +42,11 @@ const DisplayInfo = (props) => {
           </p>
           <p>
             <span style={{ fontWeight: "bolder" }}>Elevation: </span>
-            {props.volcanoData.elevation}
+            {props.volcanoData.elevation + " feet"}
+          </p>
+          <p>
+            <span style={{ fontWeight: "bolder" }}>Summit: </span>
+            {props.volcanoData.summit + " meters"}
           </p>
         </div>
       </div>

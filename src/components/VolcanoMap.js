@@ -3,7 +3,6 @@ import { Map, Marker, ZoomControl } from "pigeon-maps";
 
 // Pigeon maps component
 const VolcanoMap = (props) => {
-  
   return (
     <Map
       height={500}

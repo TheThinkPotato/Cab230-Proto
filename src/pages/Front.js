@@ -7,11 +7,6 @@ import Header from "../components/Header";
 const Front = (props) => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("dan@d.co");
-  const [password, setPassword] = useState("dan");
-  const auth_token = localStorage.getItem("token");
-  const token = localStorage.getItem("token");
-
   return (
     <div>
       <Header />
@@ -25,7 +20,10 @@ const Front = (props) => {
             <div style={{ marginTop: "2rem" }}>
               <div className="front-page-box box-border">
                 <div className="button-area">
-                  <div className="button-area-text" style={{margin:"2rem", textAlign:"center"}}>
+                  <div
+                    className="button-area-text"
+                    style={{ margin: "2rem", textAlign: "center" }}
+                  >
                     <p>Login as User or Guest</p>
                     <div className="Button">
                       <Button
@@ -44,7 +42,8 @@ const Front = (props) => {
                         className="mt-3"
                         onClick={() => {
                           localStorage.setItem("token", ""); //Clear token
-                          navigate("/Search")}}
+                          navigate("/Search");
+                        }}
                       >
                         Guest
                       </Button>
