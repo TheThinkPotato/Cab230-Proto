@@ -24,28 +24,32 @@ const LogControl = (props) => {
         <div className="front-page-box box-border">
           <div className="button-area">
             <div className="button-area-text">
-              <h3>{props.title}</h3>
-              <p>{props.text}</p>
-              <div className="log-text-box">
-                <p>Email:</p>
-                <input
-                  type={"text"}
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+              <div>
+                <h3>{props.title}</h3>
               </div>
-              <div className="log-text-box">
-                <p>Password:</p>
-                <input
-                  type={"password"}
-                  name="password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setMessage();
-                  }}
-                />
+              <div style={{ width: "350px" }}>
+                <p>{props.text}</p>
+                <div className="log-text-box">
+                  <p style={{ textAlign:"left", marginLeft:"80px" }}>Email:</p>
+                  <input
+                    type={"text"}
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="log-text-box">
+                <p style={{ textAlign:"left", marginLeft:"80px"}}>Password:</p>
+                  <input
+                    type={"password"}
+                    name="password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setMessage();
+                    }}
+                  />
+                </div>
               </div>
 
               {props.type === "login" && (

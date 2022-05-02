@@ -5,10 +5,6 @@ const LOG_IN_URL = URL + "user/login";
 const REGISTER_URL = URL + "user/register";
 const VOLCANOE_DATA_URL = URL + "volcano/";
 
-export function getURL(url) {
-  return fetch(url).then((res) => res.json());
-}
-
 export function getCountryList() {
   return fetch(COUNTRY_LIST_URL).then((res) => res.json());
 }
