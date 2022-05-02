@@ -3,8 +3,11 @@ p {
 }
 
 body {
-  background: rgba(188, 200, 255, 0.2);
+  /* //background: rgba(188, 200, 255, 0.2); */
+  background: #0e1422;  
   background-image: url("../public/images/background.jpg");
+  background-repeat: no-repeat;
+  
 }
 
 .icon {
@@ -29,6 +32,9 @@ body {
     
 }
 
+.button-area{  
+  display: inline-block;  
+}
 
 
 nav {
@@ -70,10 +76,14 @@ nav ul li a:hover {
 } 
 
 header {    
+  top: 0px;
   background: #fff;
   color: #000;
   padding: 10px 30px;
   width: 100%;
+  position: fixed;
+  z-index: 1;
+  
 }
 
 .space {
@@ -89,10 +99,11 @@ header {
 .main-window {
   display: flex;
   align-items: center;
-  margin: auto;
+  margin-top: 5rem;
+  margin-inline: auto;
   padding-top: 2rem;
   width: fit-content;
-  height: fit-content;
+  height: fit-content;  
 }
 
 .volcano-window {
@@ -101,7 +112,7 @@ header {
   align-items: center;
   width: fit-content;
   height: fit-content;
-  background: #fff;
+  background: rgba(255,255,255,0.3);
 }
 
 .volcano-info {
@@ -115,14 +126,7 @@ header {
   margin: 2rem;
 }
 
-.button-area {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: fit-content;
-  height: fit-content;
-  margin-bottom: 1.5rem;
-}
+
 
 .working-window {
   display: flex;
@@ -133,7 +137,7 @@ header {
   height: 100%;
   padding-block: 2rem;
   padding-inline: 2rem;
-  background: #fff;
+  background: rgba(255,255,255,0.3);
 }
 .control-outside {
   flex-direction: column;
@@ -156,6 +160,36 @@ header {
   padding-inline: 1%;
 }
 
+.front-page-box {    
+  margin: auto;  
+  background: rgba(255,255,255,1);
+  width: 40%;
+  height: fit-content;
+}
+
+.button-area {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: fit-content;
+  height: fit-content;
+  
+}
+
+.button-area-text{
+  margin-top: 1rem;  
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  
+}
+
+.Button{
+  display: inline;
+  padding: 20px;    
+}
+
 .control-box {
   display: flex;
   flex-direction: column;
@@ -164,4 +198,13 @@ header {
   padding-block: 1rem;
   width: fit-content;
   height: fit-content;
+}
+
+.log-box{
+  text-align: center;
+  width: 1000px;  
+}
+
+.log-text-box{
+  padding-block: 1rem;  
 }

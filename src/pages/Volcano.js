@@ -4,6 +4,7 @@ import { Button } from "reactstrap";
 import DisplayInfo from "../components/DisplayInfo";
 import VolcanoMap from "../components/VolcanoMap";
 import Header from "../components/Header";
+import { Graph } from "../components/Graph";
 
 export default function Volcanoes() {
   const [volcanoData, setVolcanoData] = useState([]);
@@ -15,8 +16,8 @@ export default function Volcanoes() {
     <div>
       <Header />
       <div className="container">
-        <div className="main-window">
-          <div className="volcano-window box-border">
+        <div className="main-window"  style={{height:"fit-content"}}>
+          <div className="volcano-window box-border" >
             <div className="volcano-info box-border">
               <DisplayInfo
                 id={id}
@@ -30,18 +31,21 @@ export default function Volcanoes() {
                 long={volcanoData.longitude}
               />
             </div>
+            {!!localStorage.getItem("token") && <Graph id={id} />}
             <div className="button-area">
               <Button
                 color="info"
                 size="sm"
-                className="mt-3"
-                onClick={() => navigate("/")}
+                className="m-3"
+                onClick={() => navigate("/search")}
               >
                 Back
               </Button>
             </div>
           </div>
         </div>
+      </div>
+      <div style={{height:"2rem"}}>
       </div>
     </div>
   );
