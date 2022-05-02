@@ -13,10 +13,10 @@ export default function Nav() {
           <Link to="/Search">Search</Link>
         </li>
         <li>
-          <Link to="/LogIn">Log In</Link>
+          <Link to="/LogIn">Register</Link>
         </li>
         <li>
-          <Link to="/LogOut">Log Out</Link>
+        <Link to="/LogIn">Log In</Link>
         </li>
       </ul>
     </nav>
