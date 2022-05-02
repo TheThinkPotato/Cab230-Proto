@@ -25,7 +25,7 @@ const Front = (props) => {
             <div style={{ marginTop: "2rem" }}>
               <div className="front-page-box box-border">
                 <div className="button-area">
-                  <div className="button-area-text">
+                  <div className="button-area-text" style={{margin:"2rem", textAlign:"center"}}>
                     <p>Login as User or Guest</p>
                     <div className="Button">
                       <Button
@@ -42,7 +42,9 @@ const Front = (props) => {
                         color="info"
                         size="sm"
                         className="mt-3"
-                        onClick={() => navigate("/Search")}
+                        onClick={() => {
+                          localStorage.setItem("token", ""); //Clear token
+                          navigate("/Search")}}
                       >
                         Guest
                       </Button>

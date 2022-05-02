@@ -6,7 +6,6 @@ import Nav from "./Nav";
 export default function Header() {
   return (
     <header>
-      {/* icon */}
       <div style={{display:"flex"}}>
         <div className="icon">
           <img src="images/logo.png" alt="Logo" />

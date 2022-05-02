@@ -8,6 +8,7 @@ import Volcano from "./pages/Volcano";
 import Front from "./pages/Front";
 import Search from "./pages/Search";
 import LogIn from "./pages/LogIn";
+import Register from "./pages/Register";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +20,7 @@ root.render(
         <Route path="/front" element={<Front />} />
         <Route path="/search" element={<Search />} />
         <Route path="/LogIn" element={<LogIn />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

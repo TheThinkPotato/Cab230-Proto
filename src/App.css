@@ -174,7 +174,7 @@ header {
   justify-content: space-around;
   width: fit-content;
   height: fit-content;
-  margin-bottom: 1.5rem;
+  
 }
 
 .button-area-text{
@@ -182,7 +182,7 @@ header {
   justify-content: center;
   width: fit-content;
   height: fit-content;
-  margin-bottom: 1.5rem;
+  
 }
 
 .Button{
@@ -202,9 +202,9 @@ header {
 
 .log-box{
   text-align: center;
-  width: 1000px; 
+  width: 1000px;  
 }
 
 .log-text-box{
-  padding-block: 1rem;
+  padding-block: 1rem;  
 }

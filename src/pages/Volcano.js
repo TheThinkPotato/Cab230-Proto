@@ -16,8 +16,8 @@ export default function Volcanoes() {
     <div>
       <Header />
       <div className="container">
-        <div className="main-window">
-          <div className="volcano-window box-border">
+        <div className="main-window"  style={{height:"fit-content"}}>
+          <div className="volcano-window box-border" >
             <div className="volcano-info box-border">
               <DisplayInfo
                 id={id}
@@ -36,7 +36,7 @@ export default function Volcanoes() {
               <Button
                 color="info"
                 size="sm"
-                className="mt-3"
+                className="m-3"
                 onClick={() => navigate("/search")}
               >
                 Back
@@ -44,6 +44,8 @@ export default function Volcanoes() {
             </div>
           </div>
         </div>
+      </div>
+      <div style={{height:"2rem"}}>
       </div>
     </div>
   );

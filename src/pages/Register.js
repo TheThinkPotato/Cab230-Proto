@@ -9,7 +9,7 @@ export default function Login() {
       <Header />
       <div className="container">
         <div className="main-window">
-          <LogControl title={"Login"} text={"Log in as User or Guest."} type={"login"}/>
+          <LogControl title={"Register"} text={"Please enter email and password."} type={"register"}/>
         </div>
       </div>
     </div>
