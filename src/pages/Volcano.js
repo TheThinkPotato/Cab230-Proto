@@ -31,8 +31,7 @@ export default function Volcanoes() {
                 long={volcanoData.longitude}
               />
             </div>
-
-            <Graph id={id} />
+            {!!localStorage.getItem("token") && <Graph id={id} />}
             <div className="button-area">
               <Button
                 color="info"

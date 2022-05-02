@@ -11,6 +11,7 @@ function Search() {
   const [country, setCountry] = useState(["Algeria"]);
   return (
     <div>
+      
       <Header />
       <div className="main-window">
         <div className="working-window box-border">
