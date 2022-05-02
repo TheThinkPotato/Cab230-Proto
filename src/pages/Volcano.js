@@ -6,12 +6,6 @@ import VolcanoMap from "../components/VolcanoMap";
 import Header from "../components/Header";
 import { Graph } from "../components/Graph";
 
-
-
-
-
-
-
 export default function Volcanoes() {
   const [volcanoData, setVolcanoData] = useState([]);
   const navigate = useNavigate();
@@ -37,6 +31,8 @@ export default function Volcanoes() {
                 long={volcanoData.longitude}
               />
             </div>
+
+            <Graph id={id} />
             <div className="button-area">
               <Button
                 color="info"
@@ -46,8 +42,6 @@ export default function Volcanoes() {
               >
                 Back
               </Button>
-
-              <Graph id={id}/>
             </div>
           </div>
         </div>
