@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 //Country Select Component
 const CountrySelect = (props) => {
   const [countryList, setCountryList] = useState([]);
@@ -7,7 +8,7 @@ const CountrySelect = (props) => {
   useEffect(() => {
     fetch(`http://sefdb02.qut.edu.au:3001/countries`)
       .then((res) => res.json())
-      .then((works) => setCountryList(works));
+      .then((countires) => setCountryList(countires));
   }, []);
 
   const Add = countryList.map((Add) => Add);
