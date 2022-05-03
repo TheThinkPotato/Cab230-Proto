@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { getCountryList } from "../data/apiCalls";
 
 //Country Select Component
 const CountrySelect = (props) => {
   const [countryList, setCountryList] = useState([]);
 
   useEffect(() => {
-    fetch(`http://sefdb02.qut.edu.au:3001/countries`)
-      .then((res) => res.json())
-      .then((works) => setCountryList(works));
+    getCountryList().then((counties) => setCountryList(counties));
   }, []);
 
   const Add = countryList.map((Add) => Add);

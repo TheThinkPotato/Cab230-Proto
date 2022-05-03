@@ -1,71 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
+import { login, register } from "../data/apiCalls";
 
 const API_URL = "http://sefdb02.qut.edu.au:3001";
 
 const LogControl = (props) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
 
-  // let errorMessage = "";
-  let error = false;
-
-  function register(email, password) {
-    const url = `${API_URL}/user/register`;
-    localStorage.setItem("token", ""); //Clear token   
-    return fetch(url, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) {
-          //console.log(res.message);
-          setMessage(res.message);
-          // errorMessage = res.message;
-          error = true;
-        } else {
-          localStorage.setItem("token", res.token);
-          error = false;
-          navigate("/search");
-        }
-      });      
-  }
-
-  function login(email, password) {
-    const url = `${API_URL}/user/login`;
-    localStorage.setItem("token", ""); //Clear token
-
-    return fetch(url, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) {
-          //console.log(res.message);
-          setMessage(res.message);
-          // errorMessage = res.message;
-          error = true;
-        } else {
-          localStorage.setItem("token", res.token);
-          error = false;
-          navigate("/search");
-        }
-      });
-  }
+  let registerError = false;
+  let logInError = false;
 
   useEffect(() => {
     //rerender
@@ -77,49 +24,61 @@ const LogControl = (props) => {
         <div className="front-page-box box-border">
           <div className="button-area">
             <div className="button-area-text">
-              <h3>{props.title}</h3>
-              <p>{props.text}</p>
-              <div className="log-text-box">
-                <p>Email:</p>
-                <input
-                  type={"text"}
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+              <div>
+                <h3>{props.title}</h3>
               </div>
-              <div className="log-text-box">
-                <p>Password:</p>
-                <input
-                  type={"password"}
-                  name="password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setMessage();
-                  }}
-                />
+              <div style={{ width: "350px" }}>
+                <p>{props.text}</p>
+                <div className="log-text-box">
+                  <p style={{ textAlign:"left", marginLeft:"80px" }}>Email:</p>
+                  <input
+                    type={"text"}
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="log-text-box">
+                <p style={{ textAlign:"left", marginLeft:"80px"}}>Password:</p>
+                  <input
+                    type={"password"}
+                    name="password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setMessage();
+                    }}
+                  />
+                </div>
               </div>
 
               {props.type === "login" && (
-                <div style={{padding:"0px",margin:"auto"}}>
+                <div style={{ padding: "0px", margin: "auto" }}>
                   <Button
                     color="info"
                     size="sm"
-                    className="mx-3"
+                    className="mx-3 mt-3"
                     onClick={() => {
-                      localStorage.setItem("token", ""); //Clear token
                       navigate("/search");
                     }}
                   >
                     Guest
-                  </Button>                    
+                  </Button>
                   <Button
                     color="info"
                     size="sm"
-                    className="mx-3"
+                    className="mx-3 mt-3"
                     onClick={() => {
-                      login(email, password);
+                      login(email, password).then((res) => {
+                        if (res.error) {
+                          logInError = true;
+                          setMessage(res.errorMessage);
+                        } else {
+                          logInError = false;
+                          setMessage("");
+                          navigate("/search");
+                        }
+                      });
                     }}
                   >
                     Log In
@@ -134,8 +93,16 @@ const LogControl = (props) => {
                     size="sm"
                     className="mt-3"
                     onClick={() => {
-                      register(email, password)
-                      
+                      register(email, password).then((res) => {
+                        if (res.error) {
+                          registerError = true;
+                          setMessage(res.errorMessage);
+                        } else {
+                          registerError = false;
+                          setMessage("");
+                          navigate("/search");
+                        }
+                      });
                     }}
                   >
                     Register
@@ -143,8 +110,8 @@ const LogControl = (props) => {
                 </div>
               )}
 
-              <div className="Button">
-                {!!message && <div> {message + "."} </div>}                
+              <div style={{height:"3rem", paddingTop:"1rem"}}>
+                {!!message && <div> {message + "."} </div>}
               </div>
             </div>
           </div>
