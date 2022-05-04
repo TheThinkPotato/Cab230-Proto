@@ -4,7 +4,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Volcano from "./pages/Volcano";
-import Front from "./pages/Front";
+import Home from "./pages/Home";
 import Search from "./pages/Search";
 import LogIn from "./pages/LogIn";
 import Register from "./pages/Register";
@@ -15,8 +15,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/volcanoe" element={<Volcano />} />
-        <Route path="/" element={<Front />} />
-        <Route path="/front" element={<Front />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/front" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/LogIn" element={<LogIn />} />
         <Route path="/register" element={<Register />} />

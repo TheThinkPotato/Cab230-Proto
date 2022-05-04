@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import LogControl from "../components/LogControl";
+import UserContol from "../components/UserControl";
 
 export default function Login() {
   return (
@@ -8,7 +8,7 @@ export default function Login() {
       <Header />
       <div className="container">
         <div className="main-window">
-          <LogControl
+          <UserContol
             title={"Login"}
             text={"Log in as User or Guest."}
             type={"login"}
