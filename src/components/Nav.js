@@ -17,26 +17,36 @@ export default function Nav() {
   }, [isLoggedIn]);
   return (
     <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/Search">Search</Link>
-        </li>
-        <li>
-          <Link to="/register">Register</Link>
-        </li>
-        <li>
-          {isLoggedIn ? (
-            <Link to="/LogIn" onClick={() => logOut()}>
-              Log Out
-            </Link>
-          ) : (
-            <Link to="/LogIn">Log In</Link>
+      <div className="left">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/Search">Search</Link>
+          </li>
+        </ul>
+      </div>
+
+      <div className="right">
+        <ul>
+          {!isLoggedIn && (
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
           )}
-        </li>
-      </ul>
+
+          <li>
+            {isLoggedIn ? (
+              <Link to="/LogIn" onClick={() => logOut()}>
+                Log Out
+              </Link>
+            ) : (
+              <Link to="/LogIn">Log In</Link>
+            )}
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }

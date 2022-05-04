@@ -4,7 +4,8 @@ import { Button } from "reactstrap";
 import Header from "../components/Header";
 
 // Pigeon maps component
-const Front = (props) => {
+const Home = (props) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
 
   return (
@@ -13,10 +14,11 @@ const Front = (props) => {
       <div className="container">
         <div className="main-window">
           <div>
-            <div className="frontLogo" style={{ marginTop: "120px" }}>
+            <div className="frontLogo" style={{ marginTop: "60px" }}>
               <img src="images/frontLogo.png" alt="Front Logo" />
               <h2> The Worlds Collection of Volcanoes.</h2>
             </div>
+            {!isLoggedIn && (
             <div style={{ marginTop: "2rem" }}>
               <div className="front-page-box box-border">
                 <div className="button-area">
@@ -24,7 +26,8 @@ const Front = (props) => {
                     className="button-area-text"
                     style={{ margin: "2rem", textAlign: "center" }}
                   >
-                    <p>Login as User or Guest</p>
+                    <p style={{marginBottom:"0px"}}>Login or Register</p>
+                    <p style={{fontSize:"15px",marginBottom:"0px"}}>to see more</p>
                     <div className="Button">
                       <Button
                         color="info"
@@ -42,16 +45,17 @@ const Front = (props) => {
                         className="mt-3"
                         onClick={() => {
                           localStorage.setItem("token", ""); //Clear token
-                          navigate("/Search");
+                          navigate("/Register");
                         }}
                       >
-                        Guest
+                        Register
                       </Button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            )}
           </div>
         </div>
       </div>
@@ -59,4 +63,4 @@ const Front = (props) => {
   );
 };
 
-export default Front;
+export default Home;

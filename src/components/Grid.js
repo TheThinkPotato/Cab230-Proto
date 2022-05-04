@@ -3,7 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import { useNavigate } from "react-router-dom";
-import apiCalls, { getCountryData } from "../data/apiCalls";
+import { getCountryData } from "../data/apiCalls";
 
 //Table template
 const table = [
