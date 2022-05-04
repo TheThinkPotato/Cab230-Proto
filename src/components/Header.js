@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "./Nav";
+import { Link } from "react-router-dom";
 
 // the header
 export default function Header() {
@@ -7,9 +8,9 @@ export default function Header() {
     <header>
       <div style={{ display: "flex" }}>
         <div className="icon">
-          <a href="/">
+          <Link to="/">
             <img src="images/logo.png" alt="Logo" />
-          </a>
+          </Link>
         </div>
 
         <Nav />
