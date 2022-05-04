@@ -10,7 +10,7 @@ export default function Login() {
         <div className="main-window">
           <UserContol
             title={"Login"}
-            text={"Log in as User or Guest."}
+            text={"Log in as User."}
             type={"login"}
           />
         </div>

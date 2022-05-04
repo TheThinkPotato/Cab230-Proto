@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "reactstrap";
-import DisplayInfo from "../components/DisplayInfo";
+import VolcanoInfo from "../components/VolcanoInfo";
 import VolcanoMap from "../components/VolcanoMap";
 import Header from "../components/Header";
 import { Graph } from "../components/Graph";
@@ -19,7 +19,7 @@ export default function Volcanoes() {
         <div className="main-window" style={{ height: "fit-content" }}>
           <div className="volcano-window box-border">
             <div className="volcano-info box-border">
-              <DisplayInfo
+              <VolcanoInfo
                 id={id}
                 volcanoData={volcanoData}
                 setVolcanoData={setVolcanoData}

@@ -3,8 +3,6 @@ import { Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { login, register } from "../data/apiCalls";
 
-const API_URL = "http://sefdb02.qut.edu.au:3001";
-
 const UserContol = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,16 +52,7 @@ const UserContol = (props) => {
 
               {props.type === "login" && (
                 <div style={{ padding: "0px", margin: "auto" }}>
-                  <Button
-                    color="info"
-                    size="sm"
-                    className="mx-3 mt-3"
-                    onClick={() => {
-                      navigate("/search");
-                    }}
-                  >
-                    Guest
-                  </Button>
+   
                   <Button
                     color="info"
                     size="sm"

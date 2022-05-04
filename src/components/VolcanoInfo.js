@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { getVolcanoeData } from "../data/apiCalls";
 
 // Gets API data for selected volcano
-const DisplayInfo = (props) => {
+const VolcanoInfo = (props) => {
   useEffect(() => {
     getVolcanoeData(props.id).then((data) => props.setVolcanoData(data));
   }, []);
@@ -54,4 +54,4 @@ const DisplayInfo = (props) => {
   );
 };
 
-export default DisplayInfo;
+export default VolcanoInfo;

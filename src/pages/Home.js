@@ -14,7 +14,7 @@ const Home = (props) => {
       <div className="container">
         <div className="main-window">
           <div>
-            <div className="frontLogo" style={{ marginTop: "120px" }}>
+            <div className="frontLogo" style={{ marginTop: "60px" }}>
               <img src="images/frontLogo.png" alt="Front Logo" />
               <h2> The Worlds Collection of Volcanoes.</h2>
             </div>
