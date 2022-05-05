@@ -3,8 +3,7 @@ p {
 }
 
 body {
-  /* //background: rgba(188, 200, 255, 0.2); */
-  background: #0e1422;
+  background: 0e1422;
   background-image: url("../public/images/background.jpg");
   background-repeat: no-repeat;
 }

@@ -6,7 +6,7 @@ import Home from "./pages/Front";
 
 function App() {
   return (
-    <div className="APP space">
+    <div className="APP space">      
       <Home />
     </div>
   );

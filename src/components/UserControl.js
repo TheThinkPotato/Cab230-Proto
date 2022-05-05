@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { login, register } from "../data/apiCalls";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 const UserContol = (props) => {
   const [email, setEmail] = useState("");
@@ -28,7 +30,9 @@ const UserContol = (props) => {
               <div style={{ width: "350px" }}>
                 <p>{props.text}</p>
                 <div className="log-text-box">
-                  <p style={{ textAlign:"left", marginLeft:"80px" }}>Email:</p>
+                  <p style={{ textAlign: "left", marginLeft: "80px" }}>
+                    Email:
+                  </p>
                   <input
                     type={"text"}
                     name="email"
@@ -37,7 +41,9 @@ const UserContol = (props) => {
                   />
                 </div>
                 <div className="log-text-box">
-                <p style={{ textAlign:"left", marginLeft:"80px"}}>Password:</p>
+                  <p style={{ textAlign: "left", marginLeft: "80px" }}>
+                    Password:
+                  </p>
                   <input
                     type={"password"}
                     name="password"
@@ -52,31 +58,45 @@ const UserContol = (props) => {
 
               {props.type === "login" && (
                 <div style={{ padding: "0px", margin: "auto" }}>
-   
-                  <Button
-                    color="info"
-                    size="sm"
-                    className="mx-3 mt-3"
-                    onClick={() => {
-                      login(email, password).then((res) => {
-                        if (res.error) {
-                          logInError = true;
-                          setMessage(res.errorMessage);
-                        } else {
-                          logInError = false;
-                          setMessage("");
-                          navigate("/search");
-                        }
-                      });
-                    }}
+                  <OverlayTrigger
+                    delay={{ hide: 450, show: 300 }}
+                    overlay={(props) => (
+                      <Tooltip {...props}>Login as user.</Tooltip>
+                    )}
+                    placement="bottom"
                   >
-                    Log In
-                  </Button>
+                    <Button
+                      color="info"
+                      size="sm"
+                      className="mx-3 mt-3"
+                      onClick={() => {
+                        login(email, password).then((res) => {
+                          if (res.error) {
+                            logInError = true;
+                            setMessage(res.errorMessage);
+                          } else {
+                            logInError = false;
+                            setMessage("");
+                            navigate("/search");
+                          }
+                        });
+                      }}
+                    >
+                      Log In
+                    </Button>
+                  </OverlayTrigger>
                 </div>
               )}
 
               {props.type === "register" && (
                 <div style={{ marringBlock: "auto", paddingBottom: "0" }}>
+                   <OverlayTrigger
+                    delay={{ hide: 450, show: 300 }}
+                    overlay={(props) => (
+                      <Tooltip {...props}>Register as new user.</Tooltip>
+                    )}
+                    placement="bottom"
+                  >
                   <Button
                     color="info"
                     size="sm"
@@ -96,10 +116,11 @@ const UserContol = (props) => {
                   >
                     Register
                   </Button>
+                  </OverlayTrigger>
                 </div>
               )}
 
-              <div style={{height:"3rem", paddingTop:"1rem"}}>
+              <div style={{ height: "3rem", paddingTop: "1rem" }}>
                 {!!message && <div> {message + "."} </div>}
               </div>
             </div>

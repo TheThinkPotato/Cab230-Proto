@@ -9,11 +9,11 @@ export function Graph(props) {
     getRegisteredVolcanoData(props.id).then((data) => setGraphData(data));
   }, []);
 
-  const data = {
-    labels: ["100 Kms", "30 Kms", "10 Kms", "5 Kms"],
+  const data = {        
+    labels: ["100 Kms", "30 Kms", "10 Kms", "5 Kms"],        
     datasets: [
       {
-        label: "Population",
+        label: "Population Density",      
         data: [
           graphData.population_100km,
           graphData.population_30km,

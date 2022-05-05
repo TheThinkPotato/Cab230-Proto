@@ -10,6 +10,7 @@ const VolcanoMap = (props) => {
       defaultCenter={[0, 0]}
       defaultZoom={8}
       center={[props.lat, props.long]}
+      alt={'Volcano Map'}
     >
       <Marker width={50} color={"red"} anchor={[props.lat, +props.long]} />
       <ZoomControl />
