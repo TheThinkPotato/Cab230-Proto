@@ -16,8 +16,8 @@ const table = [
   {
     headerName: "Country",
     field: "country",
-    sortable: true,
-    filter: true,
+    sortable: false,
+    filter: false,
   },
   {
     headerName: "Region",
