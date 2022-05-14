@@ -1,29 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
+import Select from "react-select";
 
 //Distance select component
 const DistanceSelect = (props) => {
-  const distanceOptions = ["100 Kms", "30 Kms", "10 Kms", "5 Kms"];
-  const Add = distanceOptions.map((Add) => Add);
-  const handleAddrTypeChange = (e) => {
-    props.setDistance(distanceOptions[e.target.value]);
-  };
+  const distanceOptionsList = [
+    { value: "100", label: "100 Kms" },
+    { value: "30", label: "30 Kms" },
+    { value: "10", label: "10 Kms" },
+    { value: "5", label: "5 Kms" },
+  ];
+
   useEffect(() => {
-    props.setDistance(distanceOptions[0]);
+    props.setDistance("100");
   }, []);
 
   return (
     <div>
       <h4>Select Range</h4>
-      <select
-        onChange={(e) => handleAddrTypeChange(e)}
-        className="browser-default custom-select"
-      >
-        {Add.map((address, key) => (
-          <option key={key} value={key}>
-            {address}
-          </option>
-        ))}
-      </select>
+      <Select
+        className="basic-single"
+        classNamePrefix="select"
+        defaultValue={distanceOptionsList[0]}
+        isDisabled={false}
+        isLoading={false}
+        isClearable={false}
+        isRtl={false}
+        isSearchable={false}
+        name="CountrySelector"
+        onChange={(e) => {
+          props.setDistance(String(e.value));
+        }}
+        options={distanceOptionsList}
+      />
     </div>
   );
 };
