@@ -37,7 +37,7 @@ const table = [
 //Main grid of countries and volcanoes
 const Grid = (props) => {
   const [rowData, setRowData] = useState([]);
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
 
   useEffect(() => {
     if (props.distance.length === 0) return;
