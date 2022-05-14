@@ -5,7 +5,7 @@ import { Map, Marker, ZoomControl } from "pigeon-maps";
 const VolcanoMap = (props) => {
   return (
     <Map
-      height={500}
+      height={450}
       width={850}
       defaultCenter={[0, 0]}
       defaultZoom={8}
